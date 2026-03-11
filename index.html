@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Drift - Top View Racing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="app-background"></div>
+    <div class="particles" id="particles"></div>
+
+    <nav class="navbar">
+        <div class="logo">NEON <span>DRIFT</span></div>
+        <ul class="nav-links">
+            <li><button class="nav-btn active" data-target="home">Home</button></li>
+            <li><button class="nav-btn" data-target="play">Play</button></li>
+            <li><button class="nav-btn" data-target="leaderboard">Leaderboard</button></li>
+            <li><button class="nav-btn" data-target="forum">Forum</button></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <!-- HOME SECTION -->
+        <section id="home" class="view active">
+            <!-- Hero Section -->
+            <div class="ink-hero">
+                <div class="hero-bg-wrapper">
+                    <video autoplay muted loop playsinline class="hero-video">
+                        <source src="hero_video.mp4" type="video/mp4">
+                    </video>
+                    <div class="hero-overlay"></div>
+                </div>
+                <div class="hero-body">
+                    <span class="ink-label">• PLAY</span>
+                    <h1 class="ink-title">NEON DRIFT</h1>
+                    <p class="ink-subtitle">THE NEXT GENERATION OF RETRO RACING IS HERE.</p>
+                    <div class="ink-hero-actions">
+                        <button class="ink-btn ink-btn-white" onclick="document.querySelector('[data-target=\'play\']').click()">
+                            READY TO RACE →
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature Section 1 (Black with Race Band) -->
+            <div class="ink-section ink-bg-black">
+                <div class="ink-content">
+                    <span class="ink-label">• WIN</span>
+                    <h2 class="ink-heading">DOMINATE THE TRACKS</h2>
+                    <p class="ink-desc">Challenge yourself in the ultimate high-speed environment with responsive controls and stunning visuals.</p>
+                    <button class="ink-btn ink-btn-white" onclick="switchToPlay()">EXPLORE THE GAME →</button>
+                </div>
+                <div class="race-band">
+                    <div class="race-band-container">
+                        <div class="race-band-text">RACE WEEK</div>
+                    </div>
+                    <div class="race-band-accents">
+                        <div class="race-chevron">»»»»»»</div>
+                        <div class="race-wave"></div>
+                        <div class="race-wave"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature Section 2 (Black) -->
+            <div class="ink-section ink-bg-black">
+                <div class="ink-visual">
+                    <video autoplay muted loop playsinline class="ink-video-asset">
+                        <source src="global.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="ink-content">
+                    <span class="ink-label">• EARN</span>
+                    <h2 class="ink-heading">GLOBAL RECOGNITION</h2>
+                    <p class="ink-desc">Climb the leaderboards and prove you're the fastest driver in the neon city. Real-time rankings and tiers.</p>
+                    <button class="ink-btn ink-btn-white" onclick="document.querySelector('[data-target=\'leaderboard\']').click()">VIEW RANKINGS →</button>
+                </div>
+            </div>
+
+            <!-- Feature Section 3 (Black - Updates) -->
+            <div class="ink-section ink-bg-black">
+                <div class="ink-content">
+                    <span class="ink-label">• UPDATES</span>
+                    <h2 class="ink-heading">LATEST FROM NEON HQ</h2>
+                    <p class="ink-desc">Stay tuned for new tracks, car skins, and community events in our driver's lounge.</p>
+                    <button class="ink-btn ink-btn-white" onclick="document.querySelector('[data-target=\'forum\']').click()">JOIN THE FORUM →</button>
+                </div>
+                <div class="ink-visual">
+                    <video autoplay muted loop playsinline class="ink-video-asset">
+                        <source src="neon.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <!-- FEATURE SECTION: THE FLEET (CAR SHOWROOM) -->
+            <div class="ink-section ink-bg-black" style="padding-bottom: 4rem; flex-direction: column; align-items: center; text-align: center;">
+                <div class="ink-content" style="text-align: center; max-width: 100%;">
+                    <span class="ink-label">• THE FLEET</span>
+                    <h2 class="ink-heading">CHOOSE YOUR MACHINE</h2>
+                    <p class="ink-desc" style="margin: 0 auto 4rem;">Precision engineered for high-speed neon drifting across the city's vertical circuits.</p>
+                </div>
+                
+                <div class="fleet-scroller">
+                    <div class="fleet-track">
+                        <div class="car-card">
+                            <img src="bmw.png" alt="BMW" class="car-img">
+                            <div class="car-info">
+                                <span class="car-brand">BMW</span>
+                                <h3 class="car-model">M4 DRIFT EDITION</h3>
+                            </div>
+                        </div>
+                        <div class="car-card">
+                            <img src="porsche.png" alt="Porsche" class="car-img">
+                            <div class="car-info">
+                                <span class="car-brand">PORSCHE</span>
+                                <h3 class="car-model">911 NEON GT3</h3>
+                            </div>
+                        </div>
+                        <div class="car-card">
+                            <img src="audi.png" alt="Audi" class="car-img">
+                            <div class="car-info">
+                                <span class="car-brand">AUDI</span>
+                                <h3 class="car-model">R8 QUATTRO STRIKE</h3>
+                            </div>
+                        </div>
+                        <div class="car-card">
+                            <img src="lamborghini.png" alt="Lamborghini" class="car-img">
+                            <div class="car-info">
+                                <span class="car-brand">LAMBORGHINI</span>
+                                <h3 class="car-model">AVENTADOR NITRO</h3>
+                            </div>
+                        </div>
+                        <div class="car-card">
+                            <img src="Lexus.png" alt="Lexus" class="car-img">
+                            <div class="car-info">
+                                <span class="car-brand">LEXUS</span>
+                                <h3 class="car-model">LFA SYNTHWAVE</h3>
+                            </div>
+                        </div>
+                        <div class="car-card">
+                            <img src="Thar.png" alt="Thar" class="car-img">
+                            <div class="car-info">
+                                <span class="car-brand">THAR</span>
+                                <h3 class="car-model">OFF-ROAD DRIFTER</h3>
+                            </div>
+                        </div>
+                        <div class="car-card">
+                            <img src="kia seltos.png" alt="Kia Seltos" class="car-img">
+                            <div class="car-info">
+                                <span class="car-brand">KIA</span>
+                                <h3 class="car-model">SELTOS TURBO</h3>
+                            </div>
+                        </div>
+                        <div class="car-card">
+                            <img src="maruti suzuki.png" alt="Maruti Suzuki" class="car-img">
+                            <div class="car-info">
+                                <span class="car-brand">SUZUKI</span>
+                                <h3 class="car-model">SWIFT SPORT NEON</h3>
+                            </div>
+                        </div>
+                        <div class="car-card">
+                            <img src="range rover.png" alt="Range Rover" class="car-img">
+                            <div class="car-info">
+                                <span class="car-brand">ROVER</span>
+                                <h3 class="car-model">EVOQUE BLACK OPS</h3>
+                            </div>
+                        </div>
+                        <div class="car-card">
+                            <img src="rolls royce.png" alt="Rolls Royce" class="car-img">
+                            <div class="car-info">
+                                <span class="car-brand">ROLLS</span>
+                                <h3 class="car-model">CULLINAN SUPREME</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WONDERMAKERS FOOTER (INSIDE HOME) -->
+            <footer class="wm-footer">
+                <!-- Tier 1: Neon CTA -->
+                <div class="wm-cta-section">
+                    <button class="wm-cta-btn">GET IN TOUCH</button>
+                </div>
+
+                <!-- Animated Hazard Divider -->
+                <div class="hazard-stripes"></div>
+
+                <!-- Tier 2: Industrial Main Footer -->
+                <div class="wm-main-footer">
+                    <div class="wm-footer-grid">
+                        <div class="wm-footer-col">
+                            <span class="wm-col-label">DRIVE</span>
+                            <a href="mailto:hello@neondrift.com" class="wm-large-link">HELLO@NEONDRIFT.COM</a>
+                            <p class="wm-subtext">+1 (555) NEON-RACER</p>
+                        </div>
+                        <div class="wm-footer-col">
+                            <span class="wm-col-label">HQ</span>
+                            <p class="wm-subtext">NEON CITY DISTRICT 7<br>SYNTHWAVE PLAZA, NC 8821</p>
+                        </div>
+                        <div class="wm-footer-col">
+                            <span class="wm-col-label">LEGALS</span>
+                            <p class="wm-subtext">NEON DRIFT ENTERTAINMENT<br>VAT: NO-123456789</p>
+                        </div>
+                        <div class="wm-footer-col">
+                            <span class="wm-col-label">CONNECT</span>
+                            <ul class="wm-social-list">
+                                <li><a href="https://www.instagram.com/kunal_lubhana/" target="_blank">INSTAGRAM</a></li>
+                                <li><a href="https://www.linkedin.com/in/kunal-lubhana-2b766024a/" target="_blank">LINKEDIN</a></li>
+                                <li><a href="https://x.com/TQubit" target="_blank">X.COM</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Bar -->
+                    <div class="wm-bottom-bar">
+                        <p class="wm-copyright">© 2026 NEON DRIFT. ALL RIGHTS RESERVED.</p>
+                    </div>
+                </div>
+                
+                <!-- Floating Decorative Assets (The Framing) -->
+                <div class="wm-footer-visuals">
+                    <div class="wm-car-framed car-left">🏎️</div>
+                    <div class="wm-car-framed car-right">🏎️</div>
+                </div>
+            </footer>
+        </section>
+
+        <!-- PLAY SECTION -->
+        <section id="play" class="view">
+            <div class="game-container glass">
+                <div class="hud">
+                    <div class="hud-left">
+                        <div class="hud-item mini-stat">
+                            <span class="label">SCORE</span>
+                            <span id="scoreVal" class="value">00000</span>
+                        </div>
+                        <div class="hud-item mini-stat">
+                            <span class="label">LAP</span>
+                            <span id="lapVal" class="value">1</span>
+                        </div>
+                    </div>
+
+                    <div class="hud-center">
+                        <div class="hud-item speed-container">
+                            <span id="speedVal" class="value modern-speed">0.00</span>
+                            <span class="speed-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16 8-4 4"/><path d="M7 12a5 5 0 0 1 5-5"/></svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="canvas-wrapper">
+                    <div class="env-scape env-left" id="envLeft"></div>
+                    <div class="env-scape env-right" id="envRight"></div>
+
+                    <!-- Pause/Resume Button -->
+                    <button id="pauseBtn" class="pause-btn hidden">⏸️</button>
+
+                    <!-- The game canvas is styled to look like an arcade screen -->
+                    <canvas id="gameCanvas" width="400" height="600"></canvas>
+                    <div class="scanlines"></div>
+                    
+                    <!-- Cinematic Countdown Overlay -->
+                    <div id="countdownOverlay" class="overlay hidden">
+                        <div class="countdown-text" id="countdownText">3</div>
+                    </div>
+
+                    <!-- Global Transition Overlay -->
+                    <div id="transitionOverlay" class="transition-overlay"></div>
+                    
+                    <div id="startScreen" class="overlay">
+                        <div class="overlay-content">
+                            <h2 class="pulse-text">READY TO RACE?</h2>
+                            
+                            <div class="car-picker">
+                                <button id="prevCar" class="picker-btn">←</button>
+                                <div class="car-preview-container">
+                                    <img id="carPreviewImg" src="porsche.png" alt="Car Preview">
+                                    <span id="carNameText" class="car-name">PORSCHE 911</span>
+                                </div>
+                                <button id="nextCar" class="picker-btn">→</button>
+                            </div>
+
+                            <div class="controls-guide">
+                                <div class="key">←</div>
+                                <div class="key">→</div>
+                                <span>or</span>
+                                <div class="key">A</div>
+                                <div class="key">D</div>
+                                <p>to steer</p>
+                            </div>
+                            <button class="btn btn-primary btn-glow btn-large" id="startBtn">START GAME</button>
+                        </div>
+                    </div>
+                    
+                    <div id="gameOverScreen" class="overlay hidden">
+                        <div class="overlay-content">
+                            <h2 class="crash-text">CRASHED!</h2>
+                            <div class="stats glass-dark">
+                                <div class="stat-row">
+                                    <span>Final Score:</span>
+                                    <span id="finalScore" class="stat-val text-neon">0</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span>Laps Completed:</span>
+                                    <span id="finalLaps" class="stat-val">0</span>
+                                </div>
+                            </div>
+                            <div class="save-score-form">
+                                <input type="text" id="playerName" class="input-glass" placeholder="Enter driver name" maxlength="12" autocomplete="off">
+                                <button class="btn btn-primary btn-glow" id="saveScoreBtn">Save & View Ranks</button>
+                            </div>
+                            <button class="btn btn-secondary mt-3" id="restartBtn">Play Again</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LEADERBOARD SECTION -->
+        <section id="leaderboard" class="view">
+            <div class="leaderboard-container glass">
+                <div class="leaderboard-header">
+                    <h2>Global Rankings</h2>
+                    <div class="tier-badges">
+                        <span class="badge bronze">Bronze</span>
+                        <span class="badge silver">Silver</span>
+                        <span class="badge gold">Gold</span>
+                    </div>
+                </div>
+                
+                <div class="table-wrapper">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Driver</th>
+                                <th>Score</th>
+                                <th>Laps</th>
+                                <th>Tier</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboardBody">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                    <div id="noScoresMsg" class="hidden empty-state">
+                        <div class="empty-icon">🏁</div>
+                        <p>No scores yet. Be the first to race!</p>
+                        <button class="btn btn-primary mt-3" onclick="document.querySelector('[data-target=\'play\']').click()">Race Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORUM SECTION -->
+        <section id="forum" class="view">
+            <div class="forum-container glass">
+                <div class="forum-header">
+                    <h2>Driver's Lounge</h2>
+                    <p>Discuss strategies, report bugs, and brag about your high scores!</p>
+                </div>
+                
+                <div class="forum-board">
+                    <div class="forum-topic pinned">
+                        <div class="topic-icon">📌</div>
+                        <div class="topic-content">
+                            <div class="topic-title">Patch Notes v1.0.0 - Neon Drift Release</div>
+                            <div class="topic-meta">By <span class="author admin">Admin</span> | Pinned Announcement</div>
+                        </div>
+                        <div class="topic-stats">1.2k Views</div>
+                    </div>
+                    <div class="forum-topic">
+                        <div class="topic-icon">💬</div>
+                        <div class="topic-content">
+                            <div class="topic-title">Tips for surviving Lap 5+? The cars are too fast!</div>
+                            <div class="topic-meta">By <span class="author">CyberRacer</span> | 12 Replies | Last post 5m ago</div>
+                        </div>
+                        <div class="topic-stats">342 Views</div>
+                    </div>
+                    <div class="forum-topic">
+                        <div class="topic-icon">🔥</div>
+                        <div class="topic-content">
+                            <div class="topic-title">Showcase your custom neon traces here</div>
+                            <div class="topic-meta">By <span class="author">NeonKing</span> | 45 Replies | Last post 1h ago</div>
+                        </div>
+                        <div class="topic-stats">890 Views</div>
+                    </div>
+                    <div class="forum-topic">
+                        <div class="topic-icon">❓</div>
+                        <div class="topic-content">
+                            <div class="topic-title">How is the score calculated exactly?</div>
+                            <div class="topic-meta">By <span class="author">NoobDriver99</span> | 4 Replies | Last post 3h ago</div>
+                        </div>
+                        <div class="topic-stats">156 Views</div>
+                    </div>
+                </div>
+                
+                <div class="forum-reply">
+                    <input type="text" class="input-glass" placeholder="Start a new discussion topic...">
+                    <button class="btn btn-primary btn-glow">Post Topic</button>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
